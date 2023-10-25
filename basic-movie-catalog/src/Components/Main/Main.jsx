@@ -1,13 +1,7 @@
 function Main() {
   return (
-    <main className="flex flex-col justify-center items-center h-full relative">
-      <img
-        src="src/assets/movie.png"
-        alt=""
-        width={"100px"}
-        className="absolute right-1 top-[40%] opacity-20"
-      />
-      <p className="text-lg font-fun">
+    <main className="flex flex-col justify-center items-center h-full ">
+      <p className="text-lg font-fun lg:text-2xl">
         Your movie list is empty;
         <br />
         let's try to fill it up...

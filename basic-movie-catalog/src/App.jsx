@@ -2,6 +2,7 @@ import { useState } from "react";
 import AddButton from "./Components/AddButton/AddButton";
 import Header from "./Components/Header/Header";
 import MovieContainer from "./Components/MovieContainer/MovieContainer";
+import Main from "./Components/Main/Main";
 
 const moviesData = [
   {
@@ -34,7 +35,11 @@ function App() {
   return (
     <div className="app-container bg-blue-100 h-screen p-5 overflow-y-auto">
       <Header inputValue={inputValue} setInputValue={setInputValue} />
-      <MovieContainer moviesData={movies} setMoviesData={setMovies} />
+      {movies.length > 0 ? (
+        <MovieContainer moviesData={movies} setMoviesData={setMovies} />
+      ) : (
+        <Main />
+      )}
       <AddButton onAddNewMovie={addNewMovieHandler} />
     </div>
   );
