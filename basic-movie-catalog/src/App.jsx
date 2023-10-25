@@ -1,7 +1,6 @@
 import { useState } from "react";
 import AddButton from "./Components/AddButton/AddButton";
 import Header from "./Components/Header/Header";
-import Main from "./Components/Main/Main";
 import MovieContainer from "./Components/MovieContainer/MovieContainer";
 
 const moviesData = [
@@ -18,11 +17,23 @@ const moviesData = [
 
 function App() {
   const [newMovie, setNewMovie] = useState(moviesData);
-  const addNewMovieHandler = (movie) =>
-    setNewMovie((prevMovie) => [movie, ...prevMovie]);
+  const [newValue, setNewValue] = useState("");
+  function addNewMovieHandler() {
+    if (newValue) {
+      setNewMovie((prevMovies) => [
+        {
+          id: Date.now(),
+          name: newValue,
+          src: "src/assets/TLOU-poster.jpg",
+        },
+        ...prevMovies,
+      ]);
+      setNewValue(""); // Clear the input field
+    }
+  }
   return (
     <div className="app-container bg-blue-100 h-screen p-5 overflow-y-auto">
-      <Header />
+      <Header newValue={newValue} setNewValue={setNewValue} />
       <MovieContainer moviesData={newMovie} />
       <AddButton onAddNewMovie={addNewMovieHandler} />
     </div>
