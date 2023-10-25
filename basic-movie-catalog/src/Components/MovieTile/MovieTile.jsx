@@ -1,7 +1,13 @@
 import { Icon } from "@iconify/react";
 
 function MovieTile(props) {
-  const { moviesData } = props;
+  const { moviesData, setMoviesData } = props;
+  const handleDelete = (id) => {
+    const updatedMoviesData = moviesData.filter(
+      (movie) => movie.id !== id
+    );
+    setMoviesData(updatedMoviesData);
+  };
   return moviesData.map((movie) => {
     return (
       <div className="bg-sky-200 flex gap-3 p-4 rounded-xl" key={movie.id}>
@@ -47,7 +53,10 @@ function MovieTile(props) {
             <button className="bg-sky-500 p-2 rounded-md text-slate-200">
               Watched
             </button>
-            <button className="bg-red-500 rounded-full p-2 text-lg">
+            <button
+              className="bg-red-500 rounded-full p-2 text-lg"
+              onClick={() => handleDelete(movie.id)}
+            >
               <Icon icon="fluent:delete-12-regular" />
             </button>
           </div>

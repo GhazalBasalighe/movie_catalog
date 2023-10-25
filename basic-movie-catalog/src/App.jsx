@@ -16,25 +16,26 @@ const moviesData = [
 ];
 
 function App() {
-  const [newMovie, setNewMovie] = useState(moviesData);
-  const [newValue, setNewValue] = useState("");
+  const [movies, setMovies] = useState(moviesData);
+  const [inputValue, setInputValue] = useState("");
   function addNewMovieHandler() {
-    if (newValue) {
-      setNewMovie((prevMovies) => [
+    if (inputValue) {
+      setMovies((prevMovies) => [
         {
           id: Date.now(),
-          name: newValue,
+          name: inputValue,
           src: "src/assets/TLOU-poster.jpg",
         },
         ...prevMovies,
       ]);
-      setNewValue(""); // Clear the input field
+      setInputValue(""); // Clear the input field
     }
   }
   return (
     <div className="app-container bg-blue-100 h-screen p-5 overflow-y-auto">
-      <Header newValue={newValue} setNewValue={setNewValue} />
-      <MovieContainer moviesData={newMovie} />
+      <Header newValue={inputValue} setNewValue={setInputValue} />
+      {movies.length === 0 ? <Main /> : <MovieContainer />}
+      <MovieContainer moviesData={movies} setMoviesData={setMovies} />
       <AddButton onAddNewMovie={addNewMovieHandler} />
     </div>
   );
