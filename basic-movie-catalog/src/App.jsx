@@ -33,8 +33,7 @@ function App() {
   }
   return (
     <div className="app-container bg-blue-100 h-screen p-5 overflow-y-auto">
-      <Header newValue={inputValue} setNewValue={setInputValue} />
-      {movies.length === 0 ? <Main /> : <MovieContainer />}
+      <Header inputValue={inputValue} setInputValue={setInputValue} />
       <MovieContainer moviesData={movies} setMoviesData={setMovies} />
       <AddButton onAddNewMovie={addNewMovieHandler} />
     </div>

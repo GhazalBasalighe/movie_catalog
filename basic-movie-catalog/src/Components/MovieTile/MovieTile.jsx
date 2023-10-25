@@ -19,7 +19,7 @@ function MovieTile(props) {
         />
         <div className="flex flex-col justify-between items-start relative w-full">
           {/* TITLE */}
-          <span className="font-bold text-xl">{movie.name}</span>
+          <span className="font-bold text-md">{movie.name}</span>
           {/* STARS */}
           <span className="flex">
             <Icon
@@ -54,7 +54,7 @@ function MovieTile(props) {
               Watched
             </button>
             <button
-              className="bg-red-500 rounded-full p-2 text-lg"
+              className="bg-red-500 rounded-full p-2 text-lg sm:p-3 sm:text-2xl"
               onClick={() => handleDelete(movie.id)}
             >
               <Icon icon="fluent:delete-12-regular" />
